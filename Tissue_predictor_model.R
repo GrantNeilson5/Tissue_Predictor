@@ -68,21 +68,6 @@ cm1 <- confusionMatrix(as.factor(predicted1[,1]), as.factor(validation_Tissue))
 save(alpha1.fit, file ="glmnet_class_predictor.rdat")
 
 
-predicted_rounded <- round(predicted1)
-
-
-predicted_rounded <- gsub(1,"Blood",predicted_rounded)
-predicted_rounded <- gsub(2,"Buccal",predicted_rounded)                   
-predicted_rounded <- gsub(3,"Saliva",predicted_rounded)
-
-validation_pheno$Tissue <- as.character(validation_pheno$Tissue)
-
-test <-predicted_rounded == validation_pheno$Tissue
-
-identical(predicted1, validation_pheno$Tissue)
-
-save(alpha1.fit, file = "GLMnet_Tissue_predictor.rdat")
-
 ###Using Caret
 ## Formatting data
 
